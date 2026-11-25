@@ -1,5 +1,6 @@
 import{useEffect,useMemo,useState}from"react";import{Flower2,Plus,CheckCircle2,Circle,Trash2,Search,Sparkles,Flame,Zap,Target,Leaf,Trophy,X}from"lucide-react";
 const cats=["Study","Personal","Health","Other"],priorities=["Low","Medium","High"];
+const API = "https://little-wins-backend.onrender.com";
 function plantFor(x){return x>=300?["🌸","Blooming garden"]:x>=150?["🌿","Growing plant"]:x>=50?["🌱","Tiny sprout"]:["🪴","New seed"];}
 export default function App(){const[tasks,setTasks]=useState([]),[filter,setFilter]=useState("All"),[search,setSearch]=useState(""),[modal,setModal]=useState(false),[error,setError]=useState(""),[form,setForm]=useState({title:"",category:"Study",priority:"Medium",dueDate:""});
 useEffect(()=>{fetch("/api/tasks").then(r=>r.json()).then(setTasks).catch(()=>setError("Server not connected. Run npm run dev."))},[]);
